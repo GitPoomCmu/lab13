@@ -17,3 +17,23 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+
+void stat(const double num[], int size, double answer[]){
+    double total = 0, powed = 0, multi = 1, byone = 0, max = 0, min = num[1];
+	
+	for(int i=0; i<size; i++){
+	    total += num[i];
+	    powed += pow(num[i], 2);
+	    byone += 1/num[i];
+	    multi *= num[i];
+	    max = (max < num[i])? num[i] : max;
+	    min = (min > num[i])? num[i] : min;
+	}
+	
+	answer[0] = total/size;
+	answer[1] = sqrt((powed/size) - pow(answer[0], 2));
+	answer[2] = pow(multi, 1.0/size);
+	answer[3] = size/byone;
+	answer[4] = max;
+	answer[5] = min;
+}
